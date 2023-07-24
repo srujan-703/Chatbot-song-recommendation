@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8"/>
+      <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+      <title>Song recommendation</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+   </head>
+   <style>
+      body{
+         background-image: url("./audio-g512ebd8ae_1920.jpg");
+      }
+   </style>
+<body>
+   <h4>You are {{emotion}}</h4>
+   <<table class="table">
+         <tr>
+            {% for track in get_track %}
+                {% for key, value in track.items() %}
+                  {% if key == 'name'%}
+                  <tr>
+                     <td> Song {{ key }} :</td>
+                     <td> {{ value }} </td>
+                  {% endif %}
+                   
+                  {% if key == 'duration'%}
+                     <td> {{ key }} :</td>
+                     <td> {{ value }}sec </td>
+                  {% endif %}
+
+                  {% if key == 'url'%}
+                     url1 = slugify(value)
+                     <td> {{ key }} : </td>
+                     <td> {{url1}}</td>
+                  </tr>
+                  {% endif %}
+               {% endfor %}
+            {% endfor %}
+         </tr>
+
+   </table>
+</body>
+</html>
+
+
